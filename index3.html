@@ -1,0 +1,35 @@
+<!-- FILE: index3.html --><!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Halaman 3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <div class="card">
+      <h1>Salin Link</h1>
+      <p>Klik tombol di bawah untuk menyalin link:</p><input id="copyText" type="text" value="https://kakaalifacms-ai.github.io/Tugas--PR-/" readonly style="width:100%;padding:10px;margin-bottom:12px;border-radius:8px;border:1px solid #e6e9ef;">
+
+  <button id="copyBtn" class="btn">Salin Link</button>
+
+  <p id="copyMsg" style="margin-top:12px;color:#16a34a;height:20px;"></p>
+</div>
+
+  </main>  <script>
+    const btn = document.getElementById('copyBtn');
+    const text = document.getElementById('copyText');
+    const msg = document.getElementById('copyMsg');
+
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(text.value);
+        msg.textContent = "Berhasil disalin!";
+      } catch (e) {
+        msg.textContent = "Gagal menyalin.";
+      }
+    });
+  </script></body>
+</html>

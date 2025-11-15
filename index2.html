@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Halaman Tunggu</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Warna tombol biru + posisi tengah */
+    #goBtn {
+      background: #1d4ed8; /* biru gelap */
+      color: white;
+      display: inline-block;
+      margin: 15px auto 0;
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    #goBtn:active {
+      transform: translateY(1px);
+    }
+
+    .card {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="card">
+      <h1>Tunggu 13 Detik</h1>
+      <p id="countText">Tombol akan muncul dalam 13 detik...</p>
+
+      <button id="goBtn" style="display:none;">
+        Masuk ke Halaman 3
+      </button>
+    </div>
+  </main>
+
+  <script>
+    let time = 13;
+    const text = document.getElementById('countText');
+    const btn = document.getElementById('goBtn');
+
+    const timer = setInterval(() => {
+      time--;
+      text.textContent = `Tombol akan muncul dalam ${time} detik...`;
+
+      if (time <= 0) {
+        clearInterval(timer);
+        text.textContent = "Silakan klik tombol di bawah";
+        btn.style.display = 'inline-block';
+      }
+    }, 1000);
+
+    btn.addEventListener('click', () => {
+      window.location.href = 'index3.html';
+    });
+  </script>
+</body>
+</html>
