@@ -20,7 +20,7 @@
     .box {
       background: white;
       width: 300px;
-      border: 1px solid #ccc; /* kotak */
+      border: 1px solid #ccc;
       padding: 20px;
       box-sizing: border-box;
     }
@@ -61,6 +61,21 @@
       margin-top: 10px;
       text-align: center;
       color: red;
+      font-weight: bold;
+    }
+
+    /* 🔥 Animasi goyang hanya untuk pesan error 🔥 */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-4px); }
+      40% { transform: translateX(4px); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
+      100% { transform: translateX(0); }
+    }
+
+    .shake {
+      animation: shake 0.4s;
     }
   </style>
 </head>
@@ -83,16 +98,27 @@
   </div>
 
   <script>
+    const msg = document.getElementById("message");
+    const input = document.getElementById("passwordInput");
+
     document.getElementById("submitBtn").addEventListener("click", function() {
-      const pw = document.getElementById("passwordInput").value;
-      const msg = document.getElementById("message");
+      const pw = input.value;
 
       if (pw === "120509") {
         window.location.href = "index2.html";
       } else {
         msg.textContent = "Password salah!";
+
+        // Tambahkan efek goyang ke pesan
+        msg.classList.add("shake");
+
+        // Hapus class setelah animasi selesai
+        setTimeout(() => {
+          msg.classList.remove("shake");
+        }, 400);
       }
     });
   </script>
+
 </body>
 </html>
